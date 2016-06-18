@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Fun @ Web - Place for fun learning</title>
+
+    <!-- Bootstrap -->
+		<link href="http://localhost/Protw/FunWeb/assets/css/bootstrap.min.css" rel="stylesheet">
+		
+		<!-- Custom css -->
+		<link href="http://localhost/Protw/FunWeb/assets/css/custom.css" rel="stylesheet">
+
+		<!-- Font Awesome -->
+		<script src="https://use.fontawesome.com/13382298cc.js"></script>
+
+	</head>
+	<style>
+#timer {
+  position: relative;
+  width: 100%;
+  height: 30px;
+  background-color: #ddd;
+}
+
+#myBar {
+  position: absolute;
+  width: 0%;
+  height: 100%;
+  background-color: #4CAF50;
+}
+
+#timeLeft {
+  text-align: center;
+  line-height: 30px;
+  color: white;
+}
+</style>
+  <body onload="startClient()">
+		<!-- Fixed top navbar -->  
+		<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+			<div class="container">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<a class="navbar-brand" href="../../index.php">Fun@Web</a>
+				</div>
+				
+				<div class="navbar-collapse collapse">
+					<ul class="nav navbar-nav navbar-right">
+						<li class="active"><a href="../../">Home</a>
+						<li><a href="#bout" data-toggle="modal">About</a>
+						<li class="dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Play game<b class="caret"></b></a>
+							<ul class="dropdown-menu">
+								<li class="dropdown-header">Game</li>
+								<li><a hre="#">Single player</a></li>
+								<li><a hre="#">Multplayer</a></li>
+							</ul>
+						</li>
+						<li><a href="#">Learning</a>
+						<li><a href="#contact" data-toggle="modal">Contact</a>
+					</ul>
+				</div>
+			</div>
+		</div>  
+		<!-- Jumbotron -->
+		<div class="container">
+			<div class="jumbotron text-center" >
+				<h2>Have fun learning Web Technologies</h2>
+				<!-- Create Rooms -->
+				<div class="row">
+					<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">Create Room</button>
+
+				  <!-- Modal -->
+				  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" 
+					 aria-labelledby="myModalLabel" aria-hidden="true">
+					<div class="modal-dialog">
+						<div class="modal-content">
+							<!-- Modal Header -->
+							<div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal">
+									   <span aria-hidden="true">&times;</span>
+									   <span class="sr-only">Close</span>
+								</button>
+								<h4 class="modal-title" id="myModalLabel">
+									Create Your Own Room
+								</h4>
+							</div>
+							
+							<!-- Modal Body -->
+							<div class="modal-body">
+								
+								<form id="newRoom" class="form-horizontal" role="form">
+								  <div class="form-group">
+									<label  class="col-sm-2 control-label" id="roomName">Room Name</label>
+									<div class="col-sm-10">
+										<input type="text" class="form-control" 
+										id="roomName" placeholder="Room Name"/>
+									</div>
+								  </div>
+								  <div class="form-group">
+									<label class="col-sm-2 control-label" id="password" >Password</label>
+									<div class="col-sm-10">
+										<input type="password" class="form-control"
+											id="password" placeholder="Password"/>
+									</div>
+								  </div>
+								  <div class="form-group">
+									<div id="newRoomButton" class="col-sm-offset-2 col-sm-10">
+									  <button type="button" class="btn btn-primary">Create Room</button>
+									</div>
+								  </div>
+								</form>
+							</div>
+							
+							<!-- Modal Footer -->
+							<div class="modal-footer">
+								<button type="button" class="btn btn-primary"
+										data-dismiss="modal">
+											Close
+								</button>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				</div>
+				<div class="row" id="rooms" >
+					<div id="logon1" class="col-sm-4" style="display:none">
+						<div>
+							<div class="list-group">
+								<a href="#" class="list-group-item list-group-item-info" id="room-name">First item</a>
+								<a href="#" id="player1" class="list-group-item">Second item</a>
+								<a href="#" id="player2" class="list-group-item">Third item</a>
+							 </div>
+						</div>
+					</div>
+					<div class="col-sm-4" style="display:none">
+						<div id="logon">
+							<div class="list-group">
+								<a href="#" class="list-group-item list-group-item-info">First item</a>
+								<a href="#" class="list-group-item">Second item</a>
+								<a href="#" class="list-group-item">Third item</a>
+							 </div>
+						</div>
+					</div>
+					<div class="col-sm-4" style="display:none">
+						<div id="logon">
+							<div class="list-group">
+								<a href="#" class="list-group-item list-group-item-info">First item</a>
+								<a href="#" class="list-group-item">Second item</a>
+								<a href="#" class="list-group-item">Third item</a>
+							 </div>
+						</div>
+					</div>
+				</div>	
+				
+				<div id="playmulti"style="display:none">
+				<!--//pune butonul inauntru-->
+					<div id="playsingle">
+						<div class="container" id="questionContainer" style="display:none">
+							<div class="well well-sm">
+								<div class="questionContent">
+									<p id="question">Some question</p>
+									<form>
+										<div class="funkyradio">
+											<div class="funkyradio-primary">
+												<input type="radio" name="radio" id="r1" value="1">
+												<label for="r1" id="q1"></label><br>
+											</div>
+											<div class="funkyradio-primary">
+												<input type="radio" name="radio" id="r2" value="2">
+												<label for="r2" id="q2"></label><br>
+											</div>
+											<div class="funkyradio-primary">
+												<input type="radio" name="radio" id="r3" value="3">
+												<label for="r3" id="q3"></label><br>
+											</div>
+											<div class="funkyradio-primary">
+												<input type="radio" name="radio" id="r4" value="4">
+												<label for="r4" id="q4"></label>
+											</div>
+										</div>
+									</form>
+								</div>	
+							</div>
+						</div>
+						<button class="btn btn-success" id="start">Start game</button>
+					</div>
+				</div>		
+				
+				<div class="row">
+					<div class="col-sm-4">
+						<h3>Your opponent</h3>
+						<p id="oponent"></p>
+						
+					</div>
+					<div class="col-sm-4">
+						<h3>Time Left</h3>
+						<div id="timer">
+						  <div id="myBar"></div>
+							<div id="timeLeft">10 seconds</div>
+						</div>
+					</div>
+					<div class="col-sm-4">
+						<h3>Question source</h3>
+						<p id="source">Unknown source</p>
+						
+					</div>
+				</div>	
+			</div>
+			
+		</div>
+		<!-- END OF jumbotron --><!-- Fixed footer -->
+		<div class="navbar navbar-inverse navbar-fixed-bottom" role="navigation">
+			<div class="container">
+				<div class="navbar-text pull-left">
+					<p>2016 Copyright </p>
+				</div>
+				<div class="navbar-text pull-right">
+					<a href="#"><i class="fa fa-facebook-square fa-2x"></i></a>
+					<a href="#"><i class="fa fa-twitter fa-2x"></i></a>
+					<a href="#"><i class="fa fa-google-plus fa-2x"></i></a>
+				</div>
+			</div>
+		</div>
+			<div class="modal fade" id="contact" role = "dialog">
+    	<div class="modal-dialog">
+    		<div class="modal-content">
+    			<form class="form-horizontal" role="form" method="post" action="send_form_email.php">
+	    			<div class="modal-header">
+	    				<h4>Contact</h4>
+	    			</div>
+	    			<div class="modal-body">
+	    				<div class="form-group">
+	    					<label for="contact-name" class="col-sm-2 control-label">Name</label>
+	    					<div class="col-sm-10">
+	    						<input type="text" class="form-control" name="contact-name" placeholder="Introduce your name">
+	    					</div>
+	    				</div>
+	    				<div class="form-group">
+	    					<label for="contact-email" class="col-sm-2 control-label">Email</label>
+	    					<div class="col-sm-10">
+	    						<input type="email" class="form-control" name="contact-email" placeholder="example@domain.com">
+	    					</div>
+	    				</div>
+	    				<div class="form-group">
+	    					<label for="contact-message" class="col-sm-2 control-label">Message</label>
+	    					<div class="col-sm-10">
+	    						<textarea class="form-control" rows="4" name="contact-message"></textarea>
+	    					</div>
+	    				</div>
+	    			</div>
+	    			<div class="modal-footer">
+	    				<a class="btn btn-default" data-dismiss="modal">Close</a>
+	    				<input type="submit" name="submit" value="Submit" class="btn btn-primary">
+	    			</div>
+	    		</form>
+    		</div>
+    	</div>
+    </div>
+	
+	<div class="modal fade" id="about" role="dialog">
+		<div class="modal-dialog modal-lg">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h4>About</h4>
+				</div>
+				<div class="modal-body">
+					<p>Fun@web nu este doar un joc, este o modalitate de a te relaxa si de a invata in acelasi timp.</p>
+					<p>Ce inveti? <br>
+					Inveti despre cele mai importante concepte legate de tehnologiile web: protocoplul HTTP, cookie-uri, sesiuni Web, mecanismul de functionare a unui server de aplicatii Web, dezvoltarea si invocarea de servicii Web pe baza de REST, transferul asincron de date prin Ajax, realizarea de mash-up-uri, aspecte esentiale privind securitatea Web si altele.</p>
+					<p>Cine poate juca?<br>
+					Persoanelor care s-au saturat de metodele clasice de a invata, cele care doresc sa iti reimprospateze cunostintele sau cele care pur si simplu vor sa se joace.</p>
+					<p>Ce cunostinte trebuie sa ai?<br>
+					Nu conteaza!!!</p>
+					Daca esti complet nefamiliar cu acestea iti oferim posibilitatea de a te familiariza accesand optiunea "Learning". 
+					Cand consideri ca e suficient intri in joc, varianta SINGLE PLAYER.<br>
+					Astfel te familiarizezi cu jocul acumuland in acelasi timp si puncte. Fiecare 500 de puncte acumulate te ajuta sa treci la un nou nivel.<br>
+					Un joc este formata din 10 intrebari. Fiecarea intrebare are 4 variante de raspuns din care doar una corecta. Daca gresesti vei primi raspunsul corect precum si explicatia necesara.</p>
+					<p>Daca ai incredere in cunostintele tale si nu iti place sa joci singur atunci alege varianta MULTI PLAYER. 
+					Acum incepe competitia!!!<br>
+					Jocul contine tot 10 intrebari doar ca fiecare intrebare trebuie rezolvata intr-un anumit timp.<br>
+					Daca vei parasi jocul inainte de incheierea acestuia, nu vei influenta cu nimic experinta celorlalti jucatori, ci vei primi 0 puncte pentru fiecare intrebare.</p>
+					<p>In concluzie, joaca!!! Ai doar de castigat!!!</p>
+				</div>
+				<div class="modal-footer">
+					<a class=""btn btn-default" data-dismiss="modal">Close</a>
+				</div>
+			</div>
+		</div>
+    </div>
+		
+		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+		<script src="http://localhost/Protw/FunWeb/assets/js/jquery-1.12.4.min.js"></script>
+		<script src="http://code.jquery.com/jquery-latest.js"></script>
+		<!-- Latest compiled and minified JavaScript -->
+		<script src="http://localhost/Protw/FunWeb/assets/js/bootstrap.min.js"></script>
+		
+		<!-- Javascript for Ajax call --><!-- Javascript for Ajax call -->
+		<script src="http://localhost/Protw/FunWeb/assets/js/custom.js"></script>
+		<script src="http://localhost/Protw/FunWeb/assets/js/singlePlayer.js"></script>
+		
+		<script src="http://localhost/Protw/FunWeb/assets/js/multiPlayer.js"></script>
+		
+		<script src="/socket.io/socket.io.js"></script>
+		<script src="http://code.jquery.com/jquery-1.11.1.js"></script>
+		
+		<!-- JavaScript for socket -->
+		<script src="http://localhost/ProTw/FunWeb/assets/js/startClient.js"></script>
+		
+  </body>
+</html>

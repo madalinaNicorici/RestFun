@@ -1,0 +1,155 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Fun @ Web - Place for fun learning</title>
+
+    <!-- Bootstrap -->
+		<link href="http://localhost/Protw/FunWeb/assets/css/bootstrap.min.css" rel="stylesheet">
+		
+		<!-- Custom css -->
+		<link href="http://localhost/Protw/FunWeb/assets/css/custom.css" rel="stylesheet">
+
+		<!-- Font Awesome -->
+		<script src="https://use.fontawesome.com/13382298cc.js"></script>
+
+	</head>
+  <body onload="startClient()">
+		<!-- Fixed top navbar -->  
+		<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+			<div class="container">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<a class="navbar-brand" href="../../index.php">Fun@Web</a>
+				</div>
+				
+				<div class="navbar-collapse collapse">
+					<ul class="nav navbar-nav navbar-right">
+						<li class="active"><a href="../../">Home</a>
+						<li><a href="#">About</a>
+						<li class="dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Play game<b class="caret"></b></a>
+							<ul class="dropdown-menu">
+								<li class="dropdown-header">Game</li>
+								<li><a hre="#">Single player</a></li>
+								<li><a hre="#">Multplayer</a></li>
+							</ul>
+						</li>
+						<li><a href="#">Learning</a>
+						<li><a href="#contact" data-toggle="modal">Contact</a>
+					</ul>
+				</div>
+			</div>
+		</div>  
+		<!-- Jumbotron -->
+		<div class="container">
+			<div class="jumbotron text-center" >
+				<h2>Have fun learning Web Technologies</h2>
+				
+				<div class="container" id="endGame">
+					<img src="http://www.veryicon.com/icon/png/System/Blue%20Bits/thumbs%20up.png" onload="getScore()" width="100" height="132">
+					<p id="question">Congratulations!</p>
+					<p id="par">You have finished the quiz!</p>
+					<p id="finalScore">Your score can't be displayed at the moment. <br>
+					This might take a moment...<br>
+					We are sorry!</p>
+				</div>	
+				
+				<div class="row">
+					<div class="col-sm-4">
+						<h3>Previous Question</h3>
+						<p id="previous">No previous question</p>
+						
+					</div>
+					<div class="col-sm-4">
+						<h3>Need help?</h3>
+						<div id="hintSpace">
+						</div>
+					</div>
+					<div class="col-sm-4">
+						<h3>Question source</h3>
+						<p id="source">Unknown source</p>
+						
+					</div>
+				</div>	
+			</div>
+			
+		</div>
+		<!-- END OF jumbotron --><!-- Fixed footer -->
+		<div class="navbar navbar-inverse navbar-fixed-bottom" role="navigation">
+			<div class="container">
+				<div class="navbar-text pull-left">
+					<p>2016 Copyright </p>
+				</div>
+				<div class="navbar-text pull-right">
+					<a href="#"><i class="fa fa-facebook-square fa-2x"></i></a>
+					<a href="#"><i class="fa fa-twitter fa-2x"></i></a>
+					<a href="#"><i class="fa fa-google-plus fa-2x"></i></a>
+				</div>
+			</div>
+		</div>
+			<div class="modal fade" id="contact" role = "dialog">
+    	<div class="modal-dialog">
+    		<div class="modal-content">
+    			<form class="form-horizontal" role="form" method="post" action="send_form_email.php">
+	    			<div class="modal-header">
+	    				<h4>Contact</h4>
+	    			</div>
+	    			<div class="modal-body">
+	    				<div class="form-group">
+	    					<label for="contact-name" class="col-sm-2 control-label">Name</label>
+	    					<div class="col-sm-10">
+	    						<input type="text" class="form-control" name="contact-name" placeholder="Introduce your name">
+	    					</div>
+	    				</div>
+	    				<div class="form-group">
+	    					<label for="contact-email" class="col-sm-2 control-label">Email</label>
+	    					<div class="col-sm-10">
+	    						<input type="email" class="form-control" name="contact-email" placeholder="example@domain.com">
+	    					</div>
+	    				</div>
+	    				<div class="form-group">
+	    					<label for="contact-message" class="col-sm-2 control-label">Message</label>
+	    					<div class="col-sm-10">
+	    						<textarea class="form-control" rows="4" name="contact-message"></textarea>
+	    					</div>
+	    				</div>
+	    			</div>
+	    			<div class="modal-footer">
+	    				<a class="btn btn-default" data-dismiss="modal">Close</a>
+	    				<input type="submit" name="submit" value="Submit" class="btn btn-primary">
+	    			</div>
+	    		</form>
+    		</div>
+    	</div>
+    </div>
+		
+		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+		<script src="http://localhost/Protw/FunWeb/assets/js/jquery-1.12.4.min.js"></script>
+		
+		<!-- Latest compiled and minified JavaScript -->
+		<script src="http://localhost/Protw/FunWeb/assets/js/bootstrap.min.js"></script>
+		
+		<!-- Javascript for Ajax call --><!-- Javascript for Ajax call -->
+		<script src="http://localhost/Protw/FunWeb/assets/js/custom.js"></script>
+		
+		<script src="http://localhost/Protw/FunWeb/assets/js/multiPlayer.js"></script>
+		
+		<script src="/socket.io/socket.io.js"></script>
+		<script src="http://code.jquery.com/jquery-1.11.1.js"></script>
+		
+		<!-- JavaScript for socket -->
+		<script src="http://localhost/ProTw/FunWeb/assets/js/startClient.js"></script>
+		
+  </body>
+</html>
